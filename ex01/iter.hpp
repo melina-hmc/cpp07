@@ -6,7 +6,7 @@
 template <typename T, typename F>
 void iter(T *array, size_t const length, F func)
 {
-    if (!array || !func)
+    if (!array)
         return;
         
     size_t i = 0;
