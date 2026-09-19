@@ -20,10 +20,22 @@ public:
             _array = new T[_size]();
     }
 
+    Array(const Array& src) : _array(NULL), _size(src._size)
+    {
+        if (_size > 0)
+        {
+            _array = new T[_size]();
+            for (unsigned int i = 0; i < _size; i++)
+                _array[i] = src._array[i];
+        }
+    }
+
+    /*
     Array(const Array& src) : _array(NULL), _size(0) 
     {
         *this = src; 
     }
+    */
 
     Array& operator=(const Array& src)
     {

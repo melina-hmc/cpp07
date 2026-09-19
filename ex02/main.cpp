@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "Array.hpp"
 
 #define MAX_VAL 750
@@ -50,6 +52,40 @@ int main(int, char**)
     }
     delete [] mirror;//
 
+     std::cout << "\n> ADDITIONAL TESTS : \n" << std::endl;
+
+    Array<int> emptyArray;
+    std::cout << "Empty array size: " << emptyArray.size() << std::endl;
+
+    Array<std::string> strArray(3);
+    strArray[0] = "Hello";
+    strArray[1] = "42";
+    strArray[2] = "World";
+    std::cout << "Complex type array: " << strArray[0] << " " << strArray[1] << " " << strArray[2] << std::endl;
+
+    const Array<std::string> constArray(strArray);
+    std::cout << "Const array read access: " << constArray[1] << std::endl;
+
+    std::cout << "\n> DEEP COPY & ASSIGNMENT TESTS : \n" << std::endl;
+
+    Array<std::string> copyArray(strArray);
+    Array<std::string> assignedArray;
+    assignedArray = strArray;
+    
+    copyArray[0] = "Bonjour";
+    std::cout << "[Test copie] Modification de la copie :" << std::endl;
+    std::cout << " strArray[0]  (original) = " << strArray[0] << std::endl;
+    std::cout << " copyArray[0] (copie)    = " << copyArray[0] << std::endl;
+
+    strArray[1] = "School";
+    std::cout << "\n[Test assignation] Modification de l'original :" << std::endl;
+    std::cout << " strArray[1]      (original) = " << strArray[1] << std::endl;
+    std::cout << " assignedArray[1] (assigné)  = " << assignedArray[1] << std::endl;
+
+
+    return 0;
+
+/*
     std::cout << "\n> ADDITIONAL TESTS : \n" << std::endl;
 
     Array<int> emptyArray;
@@ -66,5 +102,6 @@ int main(int, char**)
 
 
     return 0;
+*/
 }
 
